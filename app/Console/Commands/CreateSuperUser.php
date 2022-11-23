@@ -22,7 +22,13 @@ class CreateSuperUser extends Command
     {
         $truncate = $this->confirm("Do you want to remove all the users", false);
         if($truncate){
-            User::truncate();
+            try{
+                User::truncate();
+            }
+            catch(\Exception $e){
+                $this->info("Records could not be deleted");
+            }
+            
         }
         $name = $this->ask("What is your name ?");
         $email = $this->ask("What is your email");
