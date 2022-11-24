@@ -4,13 +4,19 @@ namespace Core\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class AuthController
+ * @package Core\Controllers\Api
+ */
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-    }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         $data = $request->validate([
@@ -19,17 +25,23 @@ class AuthController extends Controller
         ]);
 
         if(!auth()->attempt($data)){
-            return response(['message' => "Invalid Credentials"]);
+            return response()->json(['message' => "Invalid Credentials"],422);
         }
 
-        $token = auth()->user()->createToken('API TOKEN')->accessToken;
-        return response(['user' => auth()->user(),'token' => $token]);
+        $token = Auth::user()->createToken('API TOKEN')->accessToken;
+        return response()->json(['user' => auth()->user(),'token' => $token],200);
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function logout()
     {
-        return auth()->user();
-        auth()->user()->currentAccessToken()->delete();
-        return reponse(['message' => "User Logged Out Successfully"]);
+        $user = Auth::user();
+        if(!$user){
+            return response()->json(['message' => 'Invalid Token'],422);
+        }
+        $user->token()->revoke();
+        return response()->json(['message' => "User Logged Out Successfully"],200);
     }
 }
