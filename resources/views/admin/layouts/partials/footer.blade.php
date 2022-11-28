@@ -1,9 +1,11 @@
 <footer class="footer">
 
-   <div class="footer-content d-flex justify-content-around">
-    <p class="m-0">{{ setting_helper('general-settings','copyright') }}</p>
-    <p class="m-0">{{ setting_helper('general-settings','powered') }}</p>
-   </div>
+    <div class="col-lg-12">
+        <p class="m-0">{{ setting_helper('general-settings','copyright') }}</p>
+    </div>
+    <div class="col-lg-6">
+        <div class="m-0 text-end">{{ setting_helper('general-settings','powered') }}</div>
+    </div>
 </footer>
 <a href="javaScript:;" class="back-to-top"><i class='bi bi-arrow-up-circle'></i></a>
 <div class="switcher-body">

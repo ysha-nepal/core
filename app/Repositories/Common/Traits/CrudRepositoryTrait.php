@@ -69,8 +69,8 @@ trait CrudRepositoryTrait
     public function delete($id)
     {
         $model = $this->model->find($id);
-        if ($model->pivots) {
-            foreach ($model->pivots as $pivot) {
+        if ($this->model->pivots) {
+            foreach ($this->model->pivots as $pivot) {
                 $model->$pivot()->sync([]);
             }
         }

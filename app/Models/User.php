@@ -13,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,HasRoles,HasMedia;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -75,7 +75,7 @@ class User extends Authenticatable
 
     public function getAvatarAttribute()
     {
-        if($this->image()){
+        if ($this->image()) {
             return $this->image()->path;
         }
         return \Avatar::create($this->name)->toBase64();
