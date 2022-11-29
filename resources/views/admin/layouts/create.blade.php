@@ -29,7 +29,7 @@
                             </li>
                     </ul>
                 @endif
-                {{ Form::model($model, ['url' => $ui->getRoute($model,$params), 'method' => $ui->getMethod($model,$params),'files' => true]) }}
+                {{ Form::model($model, ['url' => $ui->getRoute($model,$params), 'method' => $ui->getMethod($model,$params),'files' => true,'id' => 'form-validator']) }}
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="lang_english" role="tabpanel">
                         <div class="row g-3">

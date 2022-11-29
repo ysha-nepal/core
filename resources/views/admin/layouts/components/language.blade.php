@@ -3,7 +3,8 @@
     {{ Form::text("$field" . "[$key]",$model->getTranslation($field,$key),[
     'class'=>'form-control' . ($errors->has("$field" . ".$key") ? ' is-invalid' : ""),
     'placeholder'=>$label,
-    'data-slug' => $slug ? "input[name='slug']" : ""
+    'data-slug' => $slug ? "input[name='slug']" : "",
+    $required ? "required" : null
     ]) }}
     @include('core::admin.layouts.components.validation',['name' => "$field" . ".$key"])
 </div>

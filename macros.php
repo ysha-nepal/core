@@ -38,13 +38,14 @@ Form::macro('settingMedia',function($model,$options){
     ]);
 });
 
-Form::macro('lang',function($model,$key,$field,$label,$slug=false){
+Form::macro('lang',function($model,$key,$field,$label,$slug=false,$required=false){
     return view('core::admin.layouts.components.language', [
         'model' => $model,
         'field' => $field,
         'key' => $key,
         'label' =>$label,
-        'slug' => $slug
+        'slug' => $slug,
+        'required' => $required
     ]);
 });
 
