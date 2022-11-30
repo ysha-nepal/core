@@ -30,12 +30,6 @@ trait CommonRepositoryTrait
      */
     public function get($columns = [])
     {
-        $query = $this->model->query();
-
-        if ($columns) {
-            $query = $query->get($columns);
-            return $query;
-        }
         return $this->model->get();
     }
 

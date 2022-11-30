@@ -2,6 +2,6 @@
     font-family: "Preeti";
     /* src: url(../fonts/font.eot ); */
     /* IE */
-    src: local("realfontname"), url("../fonts/preeti.TTF") format("truetype");
+    src: local("realfontname"), url("./fonts/preeti.TTF") format("truetype");
     /*non-IE*/
 }
