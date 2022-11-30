@@ -198,6 +198,16 @@ if (!function_exists('nepNow')) {
     }
 }
 
+if (!function_exists('adToBs')) {
+    function adToBs($date)
+    {
+        $helper = new \Core\Helpers\DateHelper();
+        return $helper->get_nepali_date([
+            $date->format("Y"),$date->format("m"),$date->format("d")
+        ]);
+    }
+}
+
 if(!function_exists('numberToWords')){
     function numberToWords(float $number)
     {
