@@ -177,6 +177,16 @@ if (!function_exists('getCurrentNepaliYear')) {
     }
 }
 
+if (!function_exists('getCurrentNepaliMonth')) {
+    function getCurrentNepaliMonth()
+    {
+        $eng_date = explode('-',now()->format('Y-m-d'));
+        $helper = new \Core\Helpers\DateHelper();
+        $nepali_date = $helper->get_nepali_date($eng_date);
+        return $nepali_date['m'];
+    }
+}
+
 if(!function_exists('getLocaleChangerName')){
     function getLocaleChangerName()
     {
@@ -215,5 +225,31 @@ if(!function_exists('numberToWords')){
         return \NumberToWords::get($number,[
            'lang' => $lang
         ]);
+    }
+}
+
+if(!function_exists('random_color_part')){
+    function random_color_part(): string
+    {
+        return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+    }
+};
+
+if(!function_exists('random_color')){
+    function random_color(): string
+    {
+        return '#' .  random_color_part() . random_color_part() . random_color_part();
+    }
+};
+
+
+if(!function_exists('label_colors')){
+    function label_colors($count): array
+    {
+        $results = [];
+        for($i=0;$i <= $count ; $i++){
+            $results[] = random_color();
+        }
+        return $results;
     }
 }

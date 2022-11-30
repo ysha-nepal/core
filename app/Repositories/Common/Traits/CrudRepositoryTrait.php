@@ -2,6 +2,8 @@
 
 namespace Core\Repositories\Common\Traits;
 
+use Core\Services\DateService;
+
 /**
  * Trait CrudRepositoryTrait
  * @package Core\Repositories\Common\Traits
@@ -17,8 +19,19 @@ trait CrudRepositoryTrait
      */
     public function store($data)
     {
+        if($this->model->nepali_dates){
+            $date_service = new DateService();
+
+            foreach($this->model->nepali_dates as $key => $column){
+                if(isset($data[$key])){
+                    $exploded = explode("-",$data[$key]);
+                    $format = $date_service->getBsDateByAdDate($exploded[0],$exploded[1],$exploded[2]);
+                    $data[$column] = $format["bsYear"] . "-" . $format["bsMonth"] . "-" . $format["bsDate"];
+                }
+            }
+        }
         $model = $this->model->create($data);
-        if ($this->model->pivots) {
+        if($this->model->pivots){
             foreach ($this->model->pivots as $pivot) {
                 if (isset($data[$pivot])) {
                     $model->$pivot()->sync($data[$pivot]);

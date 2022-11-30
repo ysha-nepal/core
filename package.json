@@ -1,8 +1,8 @@
 {
-  "name": "core",
-  "version": "1.0.0",
-  "description": "",
-  "author": "Kundan Karna",
+    "name": "core",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Kundan Karna",
     "license": "ISC",
     "devDependencies": {
         "axios": "^0.21",
@@ -11,6 +11,8 @@
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
-        "jquery-validation": "^1.19.5"
+        "jquery-validation": "^1.19.5",
+        "chart.js": "^3.8.0",
+        "chartjs-plugin-annotation": "^1.4.0"
     }
 }
