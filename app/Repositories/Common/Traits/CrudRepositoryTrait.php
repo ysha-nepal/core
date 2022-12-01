@@ -20,13 +20,9 @@ trait CrudRepositoryTrait
     public function store($data)
     {
         if($this->model->nepali_dates){
-            $date_service = new DateService();
-
             foreach($this->model->nepali_dates as $key => $column){
                 if(isset($data[$key])){
-                    $exploded = explode("-",$data[$key]);
-                    $format = $date_service->getBsDateByAdDate($exploded[0],$exploded[1],$exploded[2]);
-                    $data[$column] = $format["bsYear"] . "-" . $format["bsMonth"] . "-" . $format["bsDate"];
+                    $data[$column] = formatNepaliDate($data[$key]);
                 }
             }
         }

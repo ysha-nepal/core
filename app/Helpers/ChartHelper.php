@@ -8,7 +8,7 @@ class ChartHelper
      * @param $title
      * @return array
      */
-    public static function bar($title): array
+    public static function bar($title,$xTitle): array
     {
         return [
             "responsive" =>true,
@@ -26,7 +26,7 @@ class ChartHelper
                 'x' => [
                     "title" => [
                         "display" => true,
-                        'text' => 'Wards'
+                        'text' => $xTitle
                     ],
                 ],
             ]

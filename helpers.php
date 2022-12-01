@@ -1,6 +1,7 @@
 <?php
 
 
+use Core\Services\DateService;
 
 if (!function_exists('setting_helper')) {
     /**
@@ -251,5 +252,14 @@ if(!function_exists('label_colors')){
             $results[] = random_color();
         }
         return $results;
+    }
+}
+if(!function_exists('formatNepaliDate')){
+    function formatNepaliDate($date): string
+    {
+        $date_service = new DateService();
+        $exploded = explode("-",$date);
+        $format = $date_service->getBsDateByAdDate($exploded[0],$exploded[1],$exploded[2]);
+        return $format["bsYear"] . "-" . $format["bsMonth"] . "-" . $format["bsDate"];
     }
 }
