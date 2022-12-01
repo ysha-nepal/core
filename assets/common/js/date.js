@@ -18,19 +18,19 @@ $(function () {
                 let format = date.split('-').map(Number);
                 const nep_date = calendarFunctions.getBsDateByAdDate(format[0], format[1], format[2]);
                 let nepali_date = calendarFunctions.bsDateFormat("%y-%m-%d",nep_date.bsYear,nep_date.bsMonth,nep_date.bsDate)
-                if($(elem).data('nepali') === 0){
-                    nepali_date = nep_date.bsYear + '-' + nep_date.bsMonth + '-' +  nep_date.bsDate;
-                }
                 $(elem).val(nepali_date);
                 const eng_date_input = $(elem).attr('data-ad-elem');
                 if(eng_date_input) {
                     $(eng_date_input).val(date);
                 }
+                const nepali_date_input = $(this).data('elem');
+                if(nepali_date_input){
+                    $(nepali_date_input).val(nep_date.bsYear + '-' + nep_date.bsMonth + '-' +  nep_date.bsDate);
+                }
             }
         });
         elems.on('dateSelect',function (e) {
             const nepali = e.datePickerData.bsYear + '-' + e.datePickerData.bsMonth + '-' + e.datePickerData.bsDate;
-            console.log(nepali);
             const nepali_date_input = $(this).data('elem');
             const eng_date_input = $(this).attr('data-ad-elem');
             const en_date = $(this).attr('data-en-elem');

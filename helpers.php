@@ -219,6 +219,16 @@ if (!function_exists('adToBs')) {
     }
 }
 
+if (!function_exists('bsToAd')) {
+    function bsToAd($year,$month,$day)
+    {
+        $helper = new \Core\Helpers\DateHelper();
+        return $helper->get_eng_date([
+            $year,$month,$day
+        ]);
+    }
+}
+
 if(!function_exists('numberToWords')){
     function numberToWords(float $number)
     {
@@ -263,3 +273,5 @@ if(!function_exists('formatNepaliDate')){
         return $format["bsYear"] . "-" . $format["bsMonth"] . "-" . $format["bsDate"];
     }
 }
+
+

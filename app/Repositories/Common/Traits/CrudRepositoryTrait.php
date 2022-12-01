@@ -19,13 +19,6 @@ trait CrudRepositoryTrait
      */
     public function store($data)
     {
-        if($this->model->nepali_dates){
-            foreach($this->model->nepali_dates as $key => $column){
-                if(isset($data[$key])){
-                    $data[$column] = formatNepaliDate($data[$key]);
-                }
-            }
-        }
         $model = $this->model->create($data);
         if($this->model->pivots){
             foreach ($this->model->pivots as $pivot) {
